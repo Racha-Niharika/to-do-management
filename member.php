@@ -202,7 +202,7 @@ header a:hover{
 include 'connect.php';
 // Assuming the user is logged in, and their email is stored in the session
 // Assuming the username is passed as a query parameter
-$username = isset($_GET['username']) ? $_GET['username'] : '';
+$username = isset($_SESSION['username']) ? $_SESSION['username'] : '';
 $tname = isset($_SESSION["tname"]) ? $_SESSION["tname"] : '';
 
 // Search functionality

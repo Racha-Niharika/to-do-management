@@ -14,7 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $query = "INSERT INTO user1 (name,username, password) VALUES ('$name','$username', '$password')";
 
     if ($con->query($query) === TRUE) {
-        header("Location:index.html");
+        header("Location:welcome.html");
         exit; // You should exit after a successful header redirection to prevent further execution
     } else {
         echo "Error: " . $query . "<br>" . $con->error;

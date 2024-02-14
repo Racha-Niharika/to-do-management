@@ -1,15 +1,18 @@
 <?php
 include 'connect.php';
 session_start();
+$username = '';
 
-$email = isset($_GET['email']) ? $_GET['email'] : '';
+// Check if $_SESSION["username"] is set and not empty
+if (isset($_SESSION["username"]) && !empty($_SESSION["username"])) {
+  $username = $_SESSION["username"];
+}
 
-$_SESSION["email"] = $email;
 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["send"])) {
     $tname = $_POST['tname'];
     $name = $_POST['name'];
-    $userEmail = isset($_SESSION["email"]) ? $_SESSION["email"] : '';
+    $username = isset($_SESSION["username"]) ? $_SESSION["username"] : '';
     $recipient_email = $_POST['recipient_email'];
     $message = $_POST['message'];
     $currentDate = date("Y-m-d"); 
@@ -21,8 +24,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["send"])) {
         echo "Data inserted successfully";
         
         // Insert data into the database
-        $sql = "INSERT INTO tform(tname, name, email, recipient_email, message, currentDate) 
-                VALUES('$tname', '$name', '$userEmail', '$recipient_email', '$message', '$currentDate')";
+        $sql = "INSERT INTO tform(tname, name, username, recipient_email, message, currentDate) 
+                VALUES('$tname', '$name', '$username', '$recipient_email', '$message', '$currentDate')";
         
         $result = mysqli_query($con, $sql);
         
@@ -255,15 +258,15 @@ select:focus {
         <div class="form-container">
             <form id="contact" action="mail.php" method="post">
                 <h1>Task Form</h1>
-                <?php echo $_SESSION["email"]; ?>
-                <input type="hidden" name="email" value="<?php echo $email; ?>">
+                <?php echo $_SESSION["username"]; ?>
+                <input type="hidden" name="email" value="<?php echo $username; ?>">
 
                 <div class="input-box">
                     <input id="tname" name="tname" placeholder="team member name" type="text" tabindex="3">
                     <label for="name">Task Been Given to Team Member:</label>
                     <select name="name" placeholder="Task been already given to team members" id="name" style="width:350px;">
                         <?php
-                        $query = "SELECT tname, name FROM tform WHERE email = '$email'";
+                        $query = "SELECT tname, name FROM tform WHERE username = '$username'";
                         $result = mysqli_query($con, $query);
 
                         if ($result) {

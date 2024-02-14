@@ -215,7 +215,7 @@ if (!$result) {
                     <th>Name</th>
                     <th>Email</th>
                     <th>Recipient Email</th>
-                    <th>Task Type</th>
+                    
                     <th>Message</th>
                 </tr>
             </thead>
@@ -225,9 +225,9 @@ if (!$result) {
                     echo "<tr>";
                  
                     echo "<td>{$row['name']}</td>";
-                    echo "<td>{$row['email']}</td>";
+                    echo "<td>{$row['username']}</td>";
                     echo "<td>{$row['recipient_email']}</td>";
-                    echo "<td>{$row['task_type']}</td>";
+                    
                     echo "<td>{$row['message']}</td>";
                     echo "</tr>";
                 }

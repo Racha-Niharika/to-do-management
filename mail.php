@@ -30,6 +30,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["send"])) {
         $message = htmlspecialchars($_POST["message"]);
         $currentDate = filter_var($_POST["currentDate"], FILTER_SANITIZE_STRING);
 
+// Get username from session
+session_start();
+$username = isset($_SESSION["username"]) ? $_SESSION["username"] : '';
+
+
         // Your existing code to send email
         $mail->setFrom($email, $name);
         $mail->addAddress($recipientEmail);
@@ -45,9 +50,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["send"])) {
         // Insert form data into the database using prepared statements
         include 'connect.php'; // Assuming this file contains your database connection
 
-        $stmt = $con->prepare("INSERT INTO tform (tname, name, email, recipient_email, message, currentDate) 
+        $stmt = $con->prepare("INSERT INTO tform (tname, name, username, recipient_email, message, currentDate) 
                                VALUES (?, ?, ?, ?, ?, ?)");
-        $stmt->bind_param("ssssss", $tname, $name, $email, $recipientEmail, $message, $currentDate);
+        $stmt->bind_param("ssssss", $tname, $name, $username, $recipientEmail, $message, $currentDate);
         $stmt->execute();
 
         if ($stmt->affected_rows > 0) {
