@@ -8,6 +8,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $subject = "New Contact Form Submission";
     $headers = "From: $email";
 
+    
     // Construct the email body using HTML
     $body = "<p>Name: $name</p>";
     $body .= "<p>Email: $email</p>";
