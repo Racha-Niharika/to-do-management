@@ -152,7 +152,7 @@ form > label{
     <h3>Task Name</h3>
     <div id="input1">
         <!-- Dropdown to select task name -->
-        <select id="taskName" name="taskName" required>
+        
           <?php
     // Populate dropdown list with tasks
     while ($row = mysqli_fetch_assoc($result)) {
@@ -161,7 +161,7 @@ form > label{
     }
     ?>
 
-                </select>
+            
             </div>
 
             <h3>Task Status</h3>
