@@ -1,6 +1,6 @@
 
 <?php
-//Start the session at the beginning of the file
+// Start the session at the beginning of the file
 session_start();
 $searchTerm = '';
 ?>
@@ -233,7 +233,7 @@ if (!$result) {
             <thead>
                 <tr>
                     <th>Team Member Name</th>
-                    <th>Tas Name</th>
+                    <th>Task Name</th>
                     <!-- Add other table headers as needed -->
                     <th>status</th>
                     <th>update</th>
@@ -249,7 +249,7 @@ if (!$result) {
                 echo "<td class='$highlightClass'>" . $taskName . "</td>";  // Display Task Name with highlighting
                 echo "<td>" . $row['status'] . "</td>";  // Display Status
                 echo '<td><a href="update.php">Update</td>'; // Placeholder for Update button/link
-                
+                echo "</tr>";
             }
             ?>
             </tbody>
