@@ -249,7 +249,7 @@ if (!$result) {
                 echo "<td class='$highlightClass'>" . $taskName . "</td>";  // Display Task Name with highlighting
                 echo "<td>" . $row['status'] . "</td>";  // Display Status
                 echo '<td><a href="update.php">Update</td>'; // Placeholder for Update button/link
-                echo "</tr>";
+                
             }
             ?>
             </tbody>
