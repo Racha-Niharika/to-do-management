@@ -1,6 +1,6 @@
 
 <?php
-// Start the session at the beginning of the file
+//Start the session at the beginning of the file
 session_start();
 $searchTerm = '';
 ?>
