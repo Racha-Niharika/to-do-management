@@ -258,6 +258,3 @@ if (!$result) {
 </body>
 
 </html>
-
-
-
