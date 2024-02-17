@@ -204,28 +204,37 @@ header a:hover{
         </nav>
     </header>
 
-    <h2 style="text-align: center;">Task Records</h2>
-    <table>
-        <thead>
-            <tr>
-                <th>Team Member Name</th>
-                <th>Task Name</th>
-                <th>Status</th>
-                <th>Update</th>
-            </tr>
-        </thead>
-        <tbody>
+    <!-- Displaying records in a table -->
+<h2 style="text-align: center;">Task Records</h2>
+        <br>
+        <br>
+        <table class="center">
+            <thead>
+                <tr>
+                    <th>Team Member Name</th>
+                    <th>Task Name</th>
+                    <!-- Add other table headers as needed -->
+                    <th>status</th>
+                    <th>update</th>
+                </tr>
+            </thead>
+            <tbody>
             <?php
             while ($row = mysqli_fetch_assoc($result)) {
+                $taskName = $row['name'];
+                $highlightClass = $searchTerm != '' && stripos($taskName, $searchTerm) !== false ? 'highlight' : '';
                 echo "<tr>";
-                echo "<td>" . htmlspecialchars($row['tname']) . "</td>";
-                echo "<td>" . htmlspecialchars($row['name']) . "</td>";
-                echo "<td>" . htmlspecialchars($row['status']) . "</td>";
-                echo '<td><a href="update.php">Update</a></td>';
+                echo "<td>" . $row['tname'] . "</td>"; // Display Team Member Name
+                echo "<td class='$highlightClass'>" . $taskName . "</td>";  // Display Task Name with highlighting
+                echo "<td>" . $row['status'] . "</td>";  // Display Status
+                echo '<td><a href="update.php">Update</td>'; // Placeholder for Update button/link
                 echo "</tr>";
             }
             ?>
-        </tbody>
-    </table>
+            </tbody>
+        </table>
+    </div>
 </body>
+
 </html>
+
