@@ -1,42 +1,43 @@
 <?php
-include 'connect.php'; // Assuming this file contains your database connection
 
-$query = "SELECT * FROM tform";
-$result = mysqli_query($con, $query);
+include("connect.php");
 
-if (!$result) {
-    die("Query failed: " . mysqli_error($con));
+// Array containing table names
+$tables = array("user1", "tform");
+
+// Iterate through each table
+foreach ($tables as $tableName) {
+    // Fetch all records from the current table
+    $sql = "SELECT * FROM $tableName";
+    $result = $con->query($sql);
+    
+    // Check if there are records in the table
+    if ($result->num_rows > 0) {
+        // Print table name
+        echo "<h2>Records from table: $tableName</h2>";
+        
+        // Print table header
+        echo "<table border='1'><tr>";
+        $fields = $result->fetch_fields();
+        foreach ($fields as $field) {
+            echo "<th>$field->name</th>";
+        }
+        echo "</tr>";
+
+        // Print table data
+        while ($row = $result->fetch_assoc()) {
+            echo "<tr>";
+            foreach ($row as $value) {
+                echo "<td>$value</td>";
+            }
+            echo "</tr>";
+        }
+        echo "</table><br>";
+    } else {
+        echo "No records found in table: $tableName<br>";
+    }
 }
-?>
-<!-- Displaying records in a table -->
-        <h2>Task Records</h2>
-        <table>
-            <thead>
-                <tr>
-                  
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Recipient Email</th>
-                    <th>Task Type</th>
-                    <th>Message</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php
-                while ($row = mysqli_fetch_assoc($result)) {
-                    echo "<tr>";
-                 
-                    echo "<td>{$row['name']}</td>";
-                    echo "<td>{$row['email']}</td>";
-                    echo "<td>{$row['recipient_email']}</td>";
-                    echo "<td>{$row['task_type']}</td>";
-                    echo "<td>{$row['message']}</td>";
-                    echo "</tr>";
-                }
-                ?>
-            </tbody>
-        </table>
-    </div>
-</body>
 
-</html>
+// Close the connection
+$con->close();
+?>
