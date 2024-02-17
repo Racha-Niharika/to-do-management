@@ -1,13 +1,13 @@
 <?php
 session_start();
-/*
+
 // Check if the user is already logged in
 if (isset($_SESSION["username"])) {
     // Redirect to the homepage or another appropriate page
     header("Location: adore.php");
     exit();
 }
-*/
+
 ?>
 
 
