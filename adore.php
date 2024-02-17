@@ -18,7 +18,7 @@ if (isset($_POST['updatebtn'])) {
         echo "User role updated successfully for $username";
     }
 }
-// Logout logic
+
 if (isset($_POST['logout'])) {
     session_destroy();
     header("Location: index.php"); // Redirect to the login page after logout
