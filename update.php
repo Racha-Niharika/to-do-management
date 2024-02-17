@@ -153,13 +153,13 @@ form > label{
     <div id="input1">
         <!-- Dropdown to select task name -->
         <select id="taskName" name="taskName" required>
-            <?php
-            // Populate dropdown list with tasks
-            while ($row = mysqli_fetch_assoc($result)) {
-                $selected = ($_POST['taskName'] ?? '') === $row['name'] ? 'selected' : '';
-                echo "<option value='" . htmlspecialchars($row['name']) . "' $selected>" . htmlspecialchars($row['name']) . "</option>";
-            }
-            ?>
+          <?php
+    // Populate dropdown list with tasks
+    while ($row = mysqli_fetch_assoc($result)) {
+        $selected = isset($_GET['taskName']) && $_GET['taskName'] === $row['name'] ? 'selected' : '';
+        echo "<option value='" . htmlspecialchars($row['name']) . "' $selected>" . htmlspecialchars($row['name']) . "</option>";
+    }
+    ?>
 
                 </select>
             </div>
