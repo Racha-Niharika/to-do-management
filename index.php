@@ -1,12 +1,13 @@
 <?php
 session_start();
 
-
+// Check if the user is already logged in
 if (isset($_SESSION["username"])) {
     // Redirect to the homepage or another appropriate page
     header("Location: adore.php");
     exit();
 }
+
 
 ?>
 
@@ -15,7 +16,6 @@ if (isset($_SESSION["username"])) {
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Page</title>
