@@ -176,4 +176,4 @@ form > label{
         </form>
     </div>
 </body>
-</html>it should only display the task name not the dropdown
+</html>
