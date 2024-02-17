@@ -233,7 +233,7 @@ if (!$result) {
             <thead>
                 <tr>
                     <th>Team Member Name</th>
-                    <th>Task Name</th>
+                    <th>Tas Name</th>
                     <!-- Add other table headers as needed -->
                     <th>status</th>
                     <th>update</th>
