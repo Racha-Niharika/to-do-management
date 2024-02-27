@@ -3,7 +3,7 @@ session_start();
 
 if (isset($_SESSION["username"])) {
     // Redirect to the homepage or another appropriate page
-    header("Location: adore.php");
+    header("Location: member.php");
     exit();
 }
 
@@ -32,11 +32,12 @@ if (isset($_SESSION["username"])) {
     <!-- <link rel="stylesheet" href="style.css"> -->
 </head>
 <style>
+          @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
     * {
         margin: 0;
         padding: 0;
         box-sizing: border-box;
-        font-family: 'Roboto Slab', serif;
+        font-family: 'Poppins', sans-serif;
     }
 
     body {
@@ -50,6 +51,8 @@ if (isset($_SESSION["username"])) {
 
         position: relative;
         align-items: center;
+        height: 100%;
+        width: 100%;
 
 
 
@@ -71,14 +74,14 @@ if (isset($_SESSION["username"])) {
     #page-1 #container {
 
         position: absolute;
-        margin: 51px 4px;
+        margin: 25px 4px;
         padding: 20px 10px;
-        top: 7%;
+        top: 5%;
         right: 34%;
-        height: 500px;
+        height: 570px;
         width: 30%;
-        background-color: rgb(208, 225, 249);
-        border-radius: 20px;
+        background-color: #fff;
+        border-radius: 10px;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -108,7 +111,7 @@ if (isset($_SESSION["username"])) {
     .form-box .input-field {
         background: #eaeaea;
         border-radius: 5px;
-        padding: 14px 40px;
+        padding: 9px 40px;
         margin: 15px 3px;
         cursor: pointer;
 
@@ -148,6 +151,8 @@ if (isset($_SESSION["username"])) {
         font-weight: bold;
     }
 
+   
+
 
 
     .input-field i {
@@ -175,6 +180,7 @@ if (isset($_SESSION["username"])) {
         color: inherit;
     }
 
+  
     .btn-field {
         width: 100%;
         display: flex;
@@ -193,9 +199,11 @@ if (isset($_SESSION["username"])) {
         flex-basis: 100%;
         padding: 3px 3px;
         height: 40px;
-        background: #3c00a0;
+        background:royalblue;
         color: whitesmoke;
-        border-radius: 30px;
+        border-radius: 10px;
+        font-size: 1.1rem;
+        font-weight: 500;
         transition: 0.3s all ease;
 
 
@@ -244,9 +252,11 @@ if (isset($_SESSION["username"])) {
         flex-basis: 100%;
         padding: 3px 3px;
         height: 40px;
-        background: #3c00a0;
+        background:royalblue;
         color: whitesmoke;
-        border-radius: 30px;
+        border-radius: 10px;
+        font-size: 1.1rem;
+        font-weight: 500;
         transition: 0.3s all ease;
 
     }
@@ -322,26 +332,35 @@ if (isset($_SESSION["username"])) {
 
         <div id="container">
             <div class="form-box">
-                <img src="https://adoreearth.org/assets/images/ADORE.png" alt="" id="img1">
-                <h2 id="title">Log-in</h2>
+             <!-- <img src="https://adoreearth.org/assets/images/ADORE.png" alt="" id="img1"> -->
+                <h3 id="title" style="margin-bottom:20px ; border-bottom:2px solid royalblue; color:royalblue;">Task-Management System</h3>
                 <form action="login1.php" method="post">
+
+                <div class="form-container">
+
+                
                     <div class="input-group">
+                    <h4 style="text-align:left ; font-size:18px;">Enter Your Name:</h4>
                         <div class="input-field" id="name">
+                           
                             <i class="ri-user-fill"></i>
-                            <input type="text" placeholder="YOUR NAME" id="name" name="name" required>
+                            <input type="text" placeholder="Your Name" id="name" name="name" required>
                         </div>
 
                     <div class="input-group">
+                    <h4 style="text-align:left ; font-size:18px;">Enter Your E-mail:</h4>
                         <div class="input-field" id="Email">
-                            <i class="ri-user-fill"></i>
+                        <i class="ri-mail-fill"></i>
                             <input type="email" placeholder="Email ID" id="username" name="username" required>
                         </div>
-
+                        <h4 style="text-align:left; font-size:18px;">Enter Your Password:</h4>
                         <div class="input-field" id="Password">
                             <i class="ri-lock-fill"></i>
                             <input type="password" placeholder="Password" id="password" name="password" required>
                         </div>
                     </div>
+                    </div>
+
                     <input type="checkbox" id="remember" name="remember"><label for="">Remember Me</label>
                     <div class="btn-field">
                         <!-- <button type="button" class="disable" id="signupBtn"><a href="sign-up.html" target="_blank">Sign-up</a></button> -->
