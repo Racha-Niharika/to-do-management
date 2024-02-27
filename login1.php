@@ -23,13 +23,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION["username"] = $username;
 
             if ($_SESSION["user_role"] == "admin") {
-                header("Location: task.php");
+                header("Location: adore.php");
             } else if ($_SESSION["user_role"] == "manager") {
                 header("Location: home.php");
             } else if ($_SESSION["user_role"] == "member") {
                 header("Location: member.php");
             } else {
-                header("Location: adore.php");
+                header("Location: member.php");
             }
             exit; // Ensure no further code execution after redirection
         } else {
@@ -44,3 +44,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     echo "Invalid request method."; // Debug message
 }
 ?>
+
