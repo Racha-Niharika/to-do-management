@@ -18,20 +18,29 @@ $result = mysqli_query($con, $query);
 if (!$result) {
     die("Query failed: " . mysqli_error($con));
 }
+
+
+if (isset($_POST['logout'])) {
+    session_destroy();
+    header("Location: index.php"); // Redirect to the login page after logout
+    exit();
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Secure Page</title>
-    <link rel="stylesheet" href="Home.css">
+    <title>Member's Page</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <!-- <link rel="stylesheet" href="Home.css"> -->
 </head>
+
     <style>
     * {
     margin: 0;
     padding: 0;
-    font-family: 'Roboto Slab', serif;
+    /* font-family: 'Roboto Slab', serif; */
 }
 
 
@@ -201,23 +210,35 @@ header a:hover{
                 <input type="text" name="search" id="s-bar" placeholder="Enter task name" value="<?php echo htmlspecialchars($searchTerm); ?>">
                 <button type="submit">Search</button>
             </form>
+           
         </nav>
+        <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+        <button type="submit" name="logout">Logout</button>
+    </form>
     </header>
 
 <!-- Displaying records in a table -->
 <h2 style="text-align: center;">Task Records</h2>
         <br>
         <br>
-        <table class="center">
+        <!-- <table class="table">
             <thead>
                 <tr>
                     <th>Team Member Name</th>
                     <th>Task Name</th>
-                    <!-- Add other table headers as needed -->
                     <th>status</th>
                     <th>update</th>
                 </tr>
-            </thead>
+            </thead> -->
+  <table class="table table-bordered table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Task name</th>
+      <th scope="col">Assigned By</th>
+      <th scope="col">Task Status</th>
+      <th scope="col">Updates</th>
+    </tr>
+  </thead>
             <tbody>
             <?php
             while ($row = mysqli_fetch_assoc($result)) {
@@ -234,6 +255,7 @@ echo '<td><a href="update.php?taskName=' . urlencode($taskName) . '">Update</a><
             </tbody>
         </table>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 
 </html>
