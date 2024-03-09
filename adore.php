@@ -68,6 +68,13 @@ if (isset($_POST['logout'])) {
 <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
         <button type="submit" name="logout">Logout</button>
     </form>
+    <nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="Admin.php">Home</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Approval Page</li>
+  </ol>
+</nav>
+
     <table class="table table-bordered">
         <thead>
           <tr>
@@ -90,12 +97,12 @@ if (isset($_POST['logout'])) {
                 echo "<input type='hidden' name='username' value='{$row['username']}'>";
                 echo "<label for='Status'>Status:</label>";
                 echo "<select name='member' class='status-select' data-member-id='{$row['id']}' data-member-email='{$row['username']}'>";
-                echo "<option value='Select the Role' >Select Your Role</option>";         
-                echo "<option value='Admin'"; if ($row['role'] == 'Admin') echo " selected"; echo ">Admin</option>";
-                echo "<option value='Manager'"; if ($row['role'] == 'Manager') echo " selected"; echo ">Manager</option>";
-                echo "<option value='Member'"; if ($row['role'] == 'Member') echo " selected"; echo ">Member</option>";
+echo "<option value='Select the Role' "; if ($row['role'] == 'Select the Role') echo "selected"; echo ">Select Your Role</option>";         
+echo "<option value='Admin'"; if ($row['role'] == 'Admin') echo " selected"; echo ">Admin</option>";
+echo "<option value='Manager'"; if ($row['role'] == 'Manager') echo " selected"; echo ">Manager</option>";
+echo "<option value='Member'"; if ($row['role'] == 'Member') echo " selected"; echo ">Member</option>";
+echo "</select>";
 
-                echo "</select>";
                 echo "</td>";
                 echo "<td>";
                 if ($row['role'] == 'Approved') { 
