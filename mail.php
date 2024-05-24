@@ -18,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["send"])) {
         $mail->Host       = 'smtp.gmail.com';
         $mail->SMTPAuth   = true;
         $mail->Username   = 'sumitthakur8313@gmail.com';  // Replace with your email
-        $mail->Password   = 'yymqmlpkxtjjeult';   // Replace with your email password
+        $mail->Password   = 'ilbf sjcq xqgq kuwe';   // Replace with your email password
         $mail->SMTPSecure = 'tls';  // Use 'tls' instead of 'ssl'
         $mail->Port       = 587;
 
