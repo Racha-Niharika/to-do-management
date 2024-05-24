@@ -242,8 +242,8 @@ header a:hover{
   <table class="table table-bordered table-hover">
   <thead>
     <tr>
-      <th scope="col">Task name</th>
       <th scope="col">Assigned By</th>
+      <th scope="col">Task name</th>
       <th scope="col">Task Status</th>
       <th scope="col">Updates</th>
     </tr>
